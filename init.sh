@@ -21,7 +21,9 @@ mkdir _site
 cp -p index.htm _site/index.htm
 
 else
+ git log -1
  git checkout .
+ git fetch origin
  echo site already initialized !
 fi
 ls -l

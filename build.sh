@@ -1,6 +1,6 @@
 #
 set -ex
-if [ -e init.sh ]; then
+if [ -e init.sh -a ! -e _site ]; then
  . init.sh
 fi
 

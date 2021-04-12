@@ -7,6 +7,7 @@ cat .git/config
 set -x
 git status
 git config user.email bot@netlify.app
+git config user.name Netlify Bot
 git commit -a -m 'commit all'
 set +x
 

@@ -22,14 +22,15 @@ mkdir _site
 cp -p index.htm _site/index.htm
 
 else
- git config pull.ff only 
+ git config pull.rebase false
+ #git config pull.ff only
  echo site already initialized !
  git rev-parse --short HEAD
  git branch
  git fetch origin master
  #gitid=$(git rev-parse origin/master)
  #git merge --allow-unrelated-histories $gitid
- git checkout origin master
+ git checkout origin/master
  git pull origin master --allow-unrelated-histories
  git rev-parse --short HEAD
  git log -1

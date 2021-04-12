@@ -6,7 +6,6 @@ echo "init: start"
 echo "initial git config:"
 cat .git/config
 set -x
-git fetch origin master
 git status
 git config user.email bot@netlify.app
 git config --unset-all user.name
@@ -25,6 +24,7 @@ git remote add origin http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/not
 #git remote set-url --add source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
 #git remote set-url --delete source $(git remote get-url source)
 fi
+git fetch origin master
 
 
 set +x

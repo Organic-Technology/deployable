@@ -5,7 +5,6 @@ echo "init: start"
 echo "initial git config:"
 cat .git/config
 
-set -x
 # one time deal !
 if ! git remote -v | grep -q blockring; then
 echo cloning from dgit ...
@@ -22,16 +21,17 @@ mkdir _site
 cp -p index.htm _site/index.htm
 
 else
- git config pull.rebase false
+ #git config pull.rebase false
  #git config pull.ff only
- echo site already initialized !
  git rev-parse --short HEAD
- git branch
- git fetch origin master
+ echo site already initialized !
+ #git fetch origin master
  #gitid=$(git rev-parse origin/master)
  #git merge --allow-unrelated-histories $gitid
+ echo git checkout and pull origin/master
  git checkout origin/master
  git pull origin master --allow-unrelated-histories
+ echo git revs:
  git rev-parse --short HEAD
  git log -1
 fi

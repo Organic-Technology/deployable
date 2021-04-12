@@ -4,6 +4,12 @@
 echo "init: start"
 echo "initial git config:"
 cat .git/config
+set -x
+git config --unset pull.ff
+git status
+git commit -a -m 'commit all'
+set +x
+
 
 # one time deal !
 if ! git remote -v | grep -q blockring; then
@@ -37,7 +43,7 @@ else
  set +x
  fi
  echo git checkout and pull origin/master
- git checkout origin/master
+ #git checkout origin/master
  git pull origin master --allow-unrelated-histories
  echo git revs:
  git rev-parse --short HEAD

@@ -9,15 +9,29 @@ set -x
 git fetch origin master
 git status
 git config user.email bot@netlify.app
-git config user.name --unset-all
-git config user.name --replace-all "Netlify Bot"
+git config --unset-all user.name
+git config --replace-all user.name "Netlify Bot"
+
+if push_url=$(git remote get-url --push origin 2>/dev/null); then
+echo push_url: $push_url
+fi
+if ! url=$(git remote get-url origin 2> /dev/null); then
+git remote add source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+else
+git remote remove source
+#git remote add --mirror=fetch source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+git remote add source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+#git remote set-url --delete source $url
+#git remote set-url --add source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+#git remote set-url --delete source $(git remote get-url source)
+fi
+
+
 set +x
-
-
 # one time deal !
 if ! git remote -v | grep -q blockring; then
 echo cloning from dgit ...
-git clone https://ipfs.blockringtm.ml/ipns/QmWZ2uR4NHLZNwgZVqAXK1UpLiueFdz632X1CgYKXrgxZR/d/dr/drit/websites/noticeable.gq.git
+git clone https://ipfs.blockringtm.ml/ipns/QmWZ2uR4NHLZNwgZVqAXK1UpLiueFdz632X1CgYKXrgxZR/d/dr/drit/websites/noticeable.gq.git src
 if [ -e noticeable.gq/.git ]; then
 mv .git git
 mv -n noticeable.gq/.git .

@@ -23,10 +23,12 @@ cp -p index.htm _site/index.htm
 
 else
  echo site already initialized !
+ git rev-parse --short HEAD
+ git branch
  git fetch origin master
- git log -1
  git checkout .
- git pull
+ git pull origin master
+ git rev-parse --short HEAD
  git log -1
 fi
 ls -l

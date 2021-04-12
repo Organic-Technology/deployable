@@ -1,5 +1,6 @@
 # 
 
+qm=QmQxUgsJRc73pmeh5VD9aCxWx3GPTDWxv2SnCtKF36YAjw
 
 echo "init: start"
 echo "initial git config:"
@@ -8,12 +9,8 @@ set -x
 git fetch origin master
 git status
 git config user.email bot@netlify.app
-git config user.name --unset
-git config user.name --unset
-git config user.name --unset
-git config user.name --unset
-git config user.name --unset
-git config user.name "Netlify Bot"
+git config user.name --unset-all
+git config user.name --replace-all "Netlify Bot"
 set +x
 
 
@@ -40,6 +37,7 @@ else
  if true; then
  set -x
  gitid=$(git rev-parse HEAD)
+ git rebase master 
  git checkout master
  git merge --allow-unrelated-histories $gitid
  git status

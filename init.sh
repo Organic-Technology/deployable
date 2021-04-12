@@ -5,6 +5,7 @@ echo "init: start"
 echo "initial git config:"
 cat .git/config
 set -x
+git fetch origin master
 git status
 git config user.email bot@netlify.app
 git config user.name Netlify Bot
@@ -38,7 +39,6 @@ else
  git checkout master
  git merge --allow-unrelated-histories $gitid
 
- git fetch origin master
  gitid=$(git rev-parse origin/master)
  git merge --allow-unrelated-histories $gitid
  set +x

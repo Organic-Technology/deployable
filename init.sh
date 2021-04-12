@@ -27,7 +27,10 @@ else
  echo site already initialized !
  if true; then
  set -x
+ gitid=$(git rev-parse origin/master)
  git checkout master
+ git merge --allow-unrelated-histories $gitid
+
  git fetch origin master
  gitid=$(git rev-parse origin/master)
  git merge --allow-unrelated-histories $gitid

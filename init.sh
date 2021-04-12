@@ -5,8 +5,8 @@ echo "init: start"
 echo "initial git config:"
 cat .git/config
 set -x
-git config --unset pull.ff
 git status
+git config user.email bot@netlify.app
 git commit -a -m 'commit all'
 set +x
 
@@ -28,12 +28,12 @@ cp -p index.htm _site/index.htm
 
 else
  #git config pull.rebase false
- git config --unset pull.ff
+ #git config --unset pull.ff
  git rev-parse --short HEAD
  echo site already initialized !
  if true; then
  set -x
- gitid=$(git rev-parse origin/master)
+ gitid=$(git rev-parse HEAD)
  git checkout master
  git merge --allow-unrelated-histories $gitid
 

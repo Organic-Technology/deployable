@@ -8,8 +8,8 @@ set -x
 git fetch origin master
 git status
 git config user.email bot@netlify.app
-git config user.name Netlify Bot
-git commit -a -m 'commit all'
+git config user.name --unset
+git config user.name "Netlify Bot"
 set +x
 
 
@@ -38,7 +38,7 @@ else
  gitid=$(git rev-parse HEAD)
  git checkout master
  git merge --allow-unrelated-histories $gitid
-
+ggit status
  gitid=$(git rev-parse origin/master)
  git merge --allow-unrelated-histories $gitid
  set +x

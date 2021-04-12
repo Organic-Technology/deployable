@@ -15,11 +15,11 @@ if push_url=$(git remote get-url --push origin 2>/dev/null); then
 echo push_url: $push_url
 fi
 if ! url=$(git remote get-url origin 2> /dev/null); then
-git remote add origin http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+git remote add origin https://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
 else
 git remote remove origin
 #git remote add --mirror=fetch source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
-git remote add origin http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
+git remote add origin https://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
 #git remote set-url --delete source $url
 #git remote set-url --add source http://ipfs.blockringtm.ml/ipfs/$qm/d/dr/drit/websites/noticeable.gq.git
 #git remote set-url --delete source $(git remote get-url source)
@@ -52,6 +52,7 @@ else
  set -x
  gitid=$(git rev-parse HEAD)
  git rebase master 
+ git rev-parse HEAD
  git checkout master
  git merge --allow-unrelated-histories $gitid
  git status

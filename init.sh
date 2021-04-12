@@ -13,7 +13,8 @@ if [ -e noticeable.gq/.git ]; then
 mv .git git
 mv -n noticeable.gq/.git .
 fi
-mv -n noticeable.gq/* .
+#mv -n noticeable.gq/* .
+#git checkout .
 mkdir _site
 cp -p index.htm _site/index.htm
 

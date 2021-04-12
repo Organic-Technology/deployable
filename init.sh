@@ -1,6 +1,7 @@
 # 
 
 
+echo "init: start"
 set -x
 ls -l
 cat .git/config
@@ -11,8 +12,13 @@ mv .git git
 mv -n noticeable.gq/.git .
 mv -n noticeable.gq/* .
 mv init.sh _init.sh
+else
+ echo site already initialized !
 fi
 
 cat .git/config
 ls -l
+
+
+echo "init: done"
 

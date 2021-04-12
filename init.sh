@@ -9,5 +9,5 @@ mv -n noticeable.gq/.git .
 mv -n noticeable.gq/* .
 cat .git/config
 
-ls -lR 
+ls -laR 
 

@@ -22,12 +22,17 @@ cp -p index.htm _site/index.htm
 
 else
  #git config pull.rebase false
- #git config pull.ff only
+ git config --unset pull.ff
  git rev-parse --short HEAD
  echo site already initialized !
- #git fetch origin master
- #gitid=$(git rev-parse origin/master)
- #git merge --allow-unrelated-histories $gitid
+ if true; then
+ set -x
+ git checkout master
+ git fetch origin master
+ gitid=$(git rev-parse origin/master)
+ git merge --allow-unrelated-histories $gitid
+ set +x
+ fi
  echo git checkout and pull origin/master
  git checkout origin/master
  git pull origin master --allow-unrelated-histories
